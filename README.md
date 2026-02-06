@@ -1,11 +1,12 @@
 # dropnote.dev
 
-This repository contains the source code for **dropnote.dev**, the official website of DropNote.
+This repository contains the source code for **dropnote.dev**, the official website of [**DropNote**](https://github.com/bastian-js/dropnote).
 
-The website provides product information, release updates, and download access for DropNote — a fast macOS menu bar notes app focused on speed and a native experience.
+The website provides product information, features, app showcase and download access for DropNote — a fast macOS menu bar notes app focused on speed and a native experience.
 
 ## Tech Stack
 
+- React
 - Vite
 - TypeScript
 - Tailwind CSS
@@ -28,6 +29,6 @@ npm run build
 MIT License
 
 This license applies to the **dropnote.dev website only**.  
-The DropNote macOS app is licensed separately.
+The DropNote macOS app is [licensed separately](https://github.com/bastian-js/dropnote/blob/main/LICENSE).
 
 Copyright (c) 2026 DropNote
