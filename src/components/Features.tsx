@@ -45,7 +45,7 @@ export const Features: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-medium text-white mb-4 leading-tight">
             Why DropNote?
           </h2>
-          <p className="text-gray-400 text-lg font-light">
+          <p className="text-gray-400 text-lg">
             Everything you need, nothing you don't.
           </p>
         </div>
