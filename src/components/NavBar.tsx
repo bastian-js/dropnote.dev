@@ -26,13 +26,14 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-0.5 group cursor-pointer transition-transform duration-300 hover:scale-105">
-          <img
-            src="/images/icon.png"
-            alt="DropNote Logo"
-            className="w-10 h-10"
-          />
-
+        <div className="flex items-center gap-3 group cursor-pointer transition-transform duration-300 hover:scale-105">
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#355d8e] to-[#1a3a5c] shadow-lg group-hover:shadow-xl transition-all duration-300">
+            <img
+              src="/images/icon.png"
+              alt="DropNote Logo"
+              className="w-8 h-8"
+            />
+          </div>
           <span className="text-white font-semibold text-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             DropNote
           </span>
@@ -45,6 +46,22 @@ export const Navbar: React.FC = () => {
             className="relative text-gray-300 text-base font-medium transition-colors duration-300 hover:text-white group"
           >
             Features
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#355d8e] to-transparent group-hover:w-full transition-all duration-300" />
+          </a>
+
+          <a
+            href="#about"
+            className="relative text-gray-300 text-base font-medium transition-colors duration-300 hover:text-white group"
+          >
+            About
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#355d8e] to-transparent group-hover:w-full transition-all duration-300" />
+          </a>
+
+          <a
+            href="#showcase"
+            className="relative text-gray-300 text-base font-medium transition-colors duration-300 hover:text-white group"
+          >
+            Showcase
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#355d8e] to-transparent group-hover:w-full transition-all duration-300" />
           </a>
 
@@ -67,6 +84,7 @@ export const Navbar: React.FC = () => {
           </Link>
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden p-2 rounded-lg hover:bg-gray-800/50 transition-all duration-300"
@@ -79,9 +97,24 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a1420]/95 backdrop-blur-xl border-b border-gray-800/50 animate-in fade-in slide-in-from-top-2">
           <div className="flex flex-col gap-4 p-6">
+            <a
+              href="#about"
+              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </a>
+            <a
+              href="#showcase"
+              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Showcase
+            </a>
             <a
               href="#features"
               className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"

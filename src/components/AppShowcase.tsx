@@ -10,7 +10,10 @@ export const AppShowcase: React.FC<Props> = ({
   imageAlt = "DropNote App Screenshot",
 }) => {
   return (
-    <section className="relative bg-[#0a1420] py-8 md:py-16 px-6 overflow-hidden">
+    <section
+      className="relative bg-[#0a1420] py-8 md:py-16 px-6 overflow-hidden"
+      id="showcase"
+    >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1a3a5c] via-[#0a1420] to-[#0f1f2e] opacity-20 pointer-events-none" />
 

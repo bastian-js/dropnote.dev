@@ -2,7 +2,10 @@ import React from "react";
 
 export const About: React.FC = () => {
   return (
-    <section className="relative bg-[#0f1f2e] py-8 md:py-16 px-3 overflow-hidden">
+    <section
+      className="relative bg-[#0f1f2e] py-8 md:py-16 px-3 overflow-hidden"
+      id="about"
+    >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a3a5c] via-[#0f1f2e] to-[#0a1420] opacity-20 pointer-events-none" />
 
