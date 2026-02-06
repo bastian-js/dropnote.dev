@@ -4,6 +4,8 @@ import { Navbar } from "../components/NavBar";
 import { Hero } from "../components/Hero";
 import { Features } from "../components/Features";
 import { Footer } from "../components/Footer";
+import { About } from "../components/About";
+import { AppShowcase } from "../components/AppShowcase";
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Features />
+      <About />
+      <AppShowcase />
       <Footer />
     </div>
   );
