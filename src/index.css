@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  overflow: auto; /* scrollen bleibt möglich */
+  scrollbar-width: none; /* für Firefox */
+  -ms-overflow-style: none; /* für IE/Edge */
+}
+
+/* Baseline für Höhe & Layout */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* hide scrollbar for sidebar only */
+.sidebar-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-scroll {
+  -ms-overflow-style: none; /* IE + Edge */
+  scrollbar-width: none; /* Firefox */
+}
