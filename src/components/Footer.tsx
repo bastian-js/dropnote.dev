@@ -18,33 +18,30 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col items-center justify-center gap-8 mb-12">
           {/* Credits */}
           <div className="text-center">
-            {/* Textzeile */}
-            <p className="mb-4 text-gray-400 text-sm font-light inline-flex items-center gap-2">
-              <span>Crafted with</span>
-              <Heart className="w-5 h-5 text-[#355d8e] fill-[#355d8e] animate-pulse" />
-              <span>by</span>
+            <p className="text-gray-400 text-sm font-light mb-4">
+              Crafted with
+              <span className="inline-flex items-center mx-2 -translate-y-0.5">
+                <Heart className="w-4 h-4 text-[#355d8e] fill-[#355d8e] animate-pulse" />
+              </span>
+              by
             </p>
+            <Link
+              to="https://github.com/bastian-js"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 relative"
+            >
+              {/* Glow background */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-[#355d8e]/20 to-[#1a3a5c]/20 rounded-lg opacity-0 group-hover:opacity-100 blur-lg transition-all duration-500" />
 
-            {/* GitHub Button */}
-            <div className="flex justify-center">
-              <Link
-                to="https://github.com/bastian-js"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 relative"
-              >
-                {/* Glow */}
-                <div className="absolute -inset-3 bg-gradient-to-r from-[#355d8e]/20 to-[#1a3a5c]/20 rounded-lg opacity-0 group-hover:opacity-100 blur-lg transition-all duration-500" />
-
-                {/* Content */}
-                <div className="relative flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-800/50 group-hover:border-[#355d8e]/50 transition-all duration-300">
-                  <Github className="w-5 h-5 text-[#355d8e] group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
-                  <span className="text-white font-semibold group-hover:text-[#355d8e] transition-colors duration-300">
-                    bastian-js
-                  </span>
-                </div>
-              </Link>
-            </div>
+              {/* Content */}
+              <div className="relative flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-800/50 group-hover:border-[#355d8e]/50 transition-all duration-300">
+                <Github className="w-5 h-5 text-[#355d8e] group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="text-white font-semibold group-hover:text-[#355d8e] transition-colors duration-300">
+                  bastian-js
+                </span>
+              </div>
+            </Link>
           </div>
 
           {/* Social / Links section */}
