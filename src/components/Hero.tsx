@@ -1,52 +1,175 @@
-import { Github } from "lucide-react";
 import React, { useState } from "react";
-import { DownloadButton } from "./DownloadButton";
-import { useIsMacOS } from "../hooks/useIsMacOS";
+import { Github, Download, X, ExternalLink } from "lucide-react";
 
 export const Hero: React.FC = () => {
-  const [, setShowInfo] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <section className="relative min-h-screen bg-[#0f1f2e] flex items-center justify-center overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1a3a5c] via-[#0f1f2e] to-[#0a1420] opacity-30 pointer-events-none" />
+    <section className="relative min-h-screen bg-[#07101c] flex items-center overflow-hidden pt-16">
+      {/* Dot grid background */}
+      <div className="absolute inset-0 dot-grid opacity-100 pointer-events-none" />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <h1 className="text-5xl md:text-7xl font-medium text-white mb-6 leading-tight tracking-tight">
-          Drop your notes,
-          <br />
-          <span className="text-[#355d8e]">Access them instantly.</span>
-        </h1>
+      {/* Ambient glow blobs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#4d7ef5]/10 rounded-full blur-3xl pointer-events-none animate-glow-pulse" />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#1e3d6e]/20 rounded-full blur-3xl pointer-events-none"
+        style={{ animationDelay: "2s" }}
+      />
 
-        <p className="text-lg md:text-xl text-gray-300 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
-          A minimalist menu bar notes app for macOS. Fast, focused, always one
-          click away.
-        </p>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full py-20 lg:py-0 lg:min-h-screen flex items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
+          {/* Left — Text */}
+          <div className="flex flex-col items-start animate-fade-in-up">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#1c3350] bg-[#0d1a2b] mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4d7ef5] animate-pulse" />
+              <span className="text-[#7a9bb8] text-xs font-medium tracking-wide">
+                macOS Menu Bar App · v2.6
+              </span>
+            </div>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <DownloadButton onUnavailableClick={() => setShowInfo(true)} />
+            <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
+              Drop your notes,
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4d7ef5] to-[#7eb4ff]">
+                access them
+              </span>
+              <br />
+              instantly.
+            </h1>
 
-          <a
-            href="https://github.com/bastian-js/dropnote"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              inline-flex items-center gap-2
-              px-8 py-3
-              border border-gray-600
-              text-white text-base font-medium
-              rounded-lg
-              transition-all duration-200 ease-out
-              hover:border-gray-400 hover:scale-[1.02] hover:shadow-lg
-              active:scale-95
-            "
+            <p className="text-[#7a9bb8] text-lg leading-relaxed mb-10 max-w-lg">
+              A minimalist notes app that lives in your macOS menu bar. Fast,
+              focused, and always one click away — never lose a thought again.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => setShowModal(true)}
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#4d7ef5] hover:bg-[#5d8ef7] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-[#4d7ef5]/30 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Download className="w-5 h-5" />
+                Download for macOS
+              </button>
+
+              <a
+                href="https://github.com/bastian-js/dropnote"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 border border-[#1c3350] hover:border-[#2a4a6a] bg-[#0d1a2b]/50 hover:bg-[#0d1a2b] text-white font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Github className="w-5 h-5 text-[#7a9bb8]" />
+                View on GitHub
+              </a>
+            </div>
+
+            <p className="mt-6 text-[#3a5a78] text-sm">
+              Free · Open Source · macOS 10.15+
+            </p>
+          </div>
+
+          {/* Right — App Screenshot */}
+          <div
+            className="flex justify-center lg:justify-end"
+            style={{ animationDelay: "0.2s" }}
           >
-            <Github className="w-5 h-5" />
-            View on GitHub
-          </a>
-        </div>
+            <div className="relative">
+              {/* Glow behind image */}
+              <div className="absolute inset-0 -m-8 bg-gradient-to-r from-[#4d7ef5]/20 via-[#1e3d6e]/30 to-[#4d7ef5]/20 rounded-3xl blur-3xl" />
 
-        <p className="mt-8 text-sm text-gray-500">Version 1.3 • macOS</p>
+              {/* Floating image */}
+              <div className="relative animate-float">
+                <div className="relative rounded-2xl overflow-hidden border border-[#1c3350]/80 shadow-2xl shadow-black/60">
+                  <img
+                    src="/images/app-screenshot.png"
+                    alt="DropNote App"
+                    className="w-full max-w-[280px] md:max-w-[320px] h-auto block -mt-3"
+                  />
+                  {/* Subtle overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07101c]/20 via-transparent to-transparent pointer-events-none" />
+                </div>
+
+                {/* Floating badge — top right */}
+                <div className="absolute -top-4 -right-4 flex items-center gap-2 px-3 py-2 bg-[#0d1a2b]/90 backdrop-blur-md border border-[#1c3350] rounded-xl shadow-xl">
+                  <span className="text-lg">⚡</span>
+                  <div>
+                    <p className="text-white text-xs font-semibold leading-none">
+                      Instant access
+                    </p>
+                    <p className="text-[#7a9bb8] text-xs leading-none mt-0.5">
+                      Menu bar ready
+                    </p>
+                  </div>
+                </div>
+
+                {/* Floating badge — bottom left */}
+                <div className="absolute -bottom-4 -left-4 flex items-center gap-2 px-3 py-2 bg-[#0d1a2b]/90 backdrop-blur-md border border-[#1c3350] rounded-xl shadow-xl">
+                  <span className="text-lg">🔒</span>
+                  <div>
+                    <p className="text-white text-xs font-semibold leading-none">
+                      Touch ID
+                    </p>
+                    <p className="text-[#7a9bb8] text-xs leading-none mt-0.5">
+                      Secure by design
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Download modal */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="absolute inset-0 bg-[#07101c]/80 backdrop-blur-md"
+            onClick={() => setShowModal(false)}
+          />
+          <div className="relative w-full max-w-sm rounded-2xl border border-[#1c3350] bg-[#0d1a2b] p-6 shadow-2xl">
+            <div className="flex items-center justify-between mb-5">
+              <h3 className="text-white text-lg font-semibold">
+                Download DropNote
+              </h3>
+              <button
+                onClick={() => setShowModal(false)}
+                className="p-1.5 rounded-lg text-[#7a9bb8] hover:text-white hover:bg-[#111f30] transition-all"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <div className="w-full rounded-xl border border-[#1c3350] bg-[#111f30]/50 px-4 py-3.5 text-left cursor-not-allowed opacity-60">
+                <p className="text-white text-sm font-medium">App Store</p>
+                <p className="text-[#4d7ef5] text-xs mt-0.5">Coming soon</p>
+              </div>
+
+              <a
+                href="https://github.com/bastian-js/dropnote/releases/tag/v2.6.0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between w-full rounded-xl border border-[#4d7ef5]/40 bg-[#4d7ef5]/10 hover:bg-[#4d7ef5]/20 px-4 py-3.5 transition-all duration-200 group"
+              >
+                <div className="text-left">
+                  <p className="text-white text-sm font-medium">
+                    GitHub Releases
+                  </p>
+                  <p className="text-[#7a9bb8] text-xs mt-0.5">
+                    Release v2.6.0
+                  </p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-[#4d7ef5] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

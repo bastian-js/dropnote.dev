@@ -4,12 +4,11 @@
 
 html,
 body {
-  overflow: auto; /* scrollen bleibt möglich */
-  scrollbar-width: none; /* für Firefox */
-  -ms-overflow-style: none; /* für IE/Edge */
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Baseline für Höhe & Layout */
 html,
 body,
 #root {
@@ -19,12 +18,53 @@ body,
   padding: 0;
 }
 
-/* hide scrollbar for sidebar only */
 .sidebar-scroll::-webkit-scrollbar {
   display: none;
 }
 
 .sidebar-scroll {
-  -ms-overflow-style: none; /* IE + Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(77, 126, 245, 0.12) 1px, transparent 0);
+  background-size: 36px 36px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+  width: 100%;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Github, Menu, X } from "lucide-react";
+import { Github, Menu, X, Download } from "lucide-react";
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -8,129 +8,111 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a1420]/80 backdrop-blur-xl border-b border-gray-800/50 shadow-lg"
+          ? "bg-[#07101c]/90 backdrop-blur-2xl border-b border-[#1c3350]/50 shadow-xl shadow-black/20"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center gap-3 group cursor-pointer transition-transform duration-300 hover:scale-105">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#355d8e] to-[#1a3a5c] shadow-lg group-hover:shadow-xl transition-all duration-300">
-            <img
-              src="/images/icon.png"
-              alt="DropNote Logo"
-              className="w-8 h-8"
-            />
-          </div>
-          <span className="text-white font-semibold text-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <img
+            src="/images/icon.png"
+            alt="DropNote"
+            className="w-8 h-8 rounded-xl shadow-lg shadow-[#4d7ef5]/20"
+          />
+          <span className="text-white font-semibold text-lg tracking-tight">
             DropNote
           </span>
-        </div>
+        </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex gap-8 items-center">
+        <div className="hidden md:flex items-center gap-7">
+          {[
+            { href: "/#features", label: "Features" },
+            { href: "/#screenshots", label: "Screenshots" },
+            { href: "/#about", label: "About" },
+          ].map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="text-[#7a9bb8] text-sm font-medium hover:text-white transition-colors duration-200"
+            >
+              {label}
+            </a>
+          ))}
           <a
-            href="#features"
-            className="relative text-gray-300 text-base font-medium transition-colors duration-300 hover:text-white group"
-          >
-            Features
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#355d8e] to-transparent group-hover:w-full transition-all duration-300" />
-          </a>
-
-          <a
-            href="#about"
-            className="relative text-gray-300 text-base font-medium transition-colors duration-300 hover:text-white group"
-          >
-            About
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#355d8e] to-transparent group-hover:w-full transition-all duration-300" />
-          </a>
-
-          <a
-            href="#showcase"
-            className="relative text-gray-300 text-base font-medium transition-colors duration-300 hover:text-white group"
-          >
-            Showcase
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#355d8e] to-transparent group-hover:w-full transition-all duration-300" />
-          </a>
-
-          <Link
-            to="https://github.com/bastian-js/dropnote"
+            href="https://github.com/bastian-js/dropnote"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative inline-flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300 font-medium transition-all duration-300 group overflow-hidden"
+            className="flex items-center gap-1.5 text-[#7a9bb8] text-sm font-medium hover:text-white transition-colors duration-200"
           >
-            {/* Background animation */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#355d8e]/20 to-[#1a3a5c]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
-
-            {/* Border animation */}
-            <div className="absolute inset-0 rounded-lg border border-transparent group-hover:border-[#355d8e]/50 transition-all duration-300" />
-
-            <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300">
-              GitHub
-              <Github className="w-4 h-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
-            </span>
-          </Link>
+            <Github className="w-4 h-4" />
+            GitHub
+          </a>
+          <a
+            href="https://github.com/bastian-js/dropnote/releases/tag/v2.6.0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-[#4d7ef5] hover:bg-[#5d8ef7] text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#4d7ef5]/30"
+          >
+            <Download className="w-3.5 h-3.5" />
+            Download
+          </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-800/50 transition-all duration-300"
+          className="md:hidden p-2 text-[#7a9bb8] hover:text-white transition-colors"
         >
           {mobileMenuOpen ? (
-            <X className="w-6 h-6 text-gray-300" />
+            <X className="w-5 h-5" />
           ) : (
-            <Menu className="w-6 h-6 text-gray-300" />
+            <Menu className="w-5 h-5" />
           )}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a1420]/95 backdrop-blur-xl border-b border-gray-800/50 animate-in fade-in slide-in-from-top-2">
-          <div className="flex flex-col gap-4 p-6">
+        <div className="md:hidden bg-[#07101c]/95 backdrop-blur-2xl border-b border-[#1c3350]/50">
+          <div className="flex flex-col gap-1 p-4">
+            {[
+              { href: "/#features", label: "Features" },
+              { href: "/#screenshots", label: "Screenshots" },
+              { href: "/#about", label: "About" },
+            ].map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="px-3 py-2.5 text-[#7a9bb8] hover:text-white hover:bg-[#111f30] rounded-lg transition-all text-sm font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
             <a
-              href="#about"
-              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="#showcase"
-              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Showcase
-            </a>
-            <a
-              href="#features"
-              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Features
-            </a>
-            <Link
-              to="https://github.com/bastian-js/dropnote"
+              href="https://github.com/bastian-js/dropnote"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+              className="flex items-center gap-2 px-3 py-2.5 text-[#7a9bb8] hover:text-white hover:bg-[#111f30] rounded-lg transition-all text-sm font-medium"
             >
+              <Github className="w-4 h-4" />
               GitHub
-              <Github className="w-5 h-5" />
-            </Link>
+            </a>
+            <a
+              href="https://github.com/bastian-js/dropnote/releases/tag/v2.6.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 px-3 py-2.5 bg-[#4d7ef5] text-white text-sm font-medium rounded-lg text-center"
+            >
+              Download for macOS
+            </a>
           </div>
         </div>
       )}

@@ -6,90 +6,74 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#0a1420] overflow-hidden">
-      {/* Top border with gradient */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#355d8e]/50 to-transparent" />
-
-      {/* Background glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1a3a5c]/10 via-transparent to-transparent pointer-events-none" />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 md:py-20">
-        {/* Main content */}
-        <div className="flex flex-col items-center justify-center gap-8 mb-12">
-          {/* Credits */}
-          <div className="text-center">
-            {/* Textzeile */}
-            <p className="mb-4 text-gray-400 text-sm font-light inline-flex items-center gap-2">
-              <span>Crafted with</span>
-              <Heart className="w-5 h-5 text-[#355d8e] fill-[#355d8e] animate-pulse" />
-              <span>by</span>
-            </p>
-
-            {/* GitHub Button */}
-            <div className="flex justify-center">
-              <Link
-                to="https://github.com/bastian-js"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 relative"
-              >
-                {/* Glow */}
-                <div className="absolute -inset-3 bg-gradient-to-r from-[#355d8e]/20 to-[#1a3a5c]/20 rounded-lg opacity-0 group-hover:opacity-100 blur-lg transition-all duration-500" />
-
-                {/* Content */}
-                <div className="relative flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-800/50 group-hover:border-[#355d8e]/50 transition-all duration-300">
-                  <Github className="w-5 h-5 text-[#355d8e] group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
-                  <span className="text-white font-semibold group-hover:text-[#355d8e] transition-colors duration-300">
-                    bastian-js
-                  </span>
-                </div>
-              </Link>
+    <footer className="relative bg-[#07101c] border-t border-[#1c3350]/50">
+      <div className="max-w-6xl mx-auto px-6 py-14">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Logo + tagline */}
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <div className="flex items-center gap-2.5">
+              <img
+                src="/images/icon.png"
+                alt="DropNote"
+                className="w-7 h-7 rounded-lg"
+              />
+              <span className="text-white font-semibold text-base tracking-tight">
+                DropNote
+              </span>
             </div>
+            <p className="text-[#3a5a78] text-sm">
+              Notes, right where you need them.
+            </p>
           </div>
 
-          {/* Social / Links section */}
-          <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-gray-500">
+          {/* Links */}
+          <div className="flex items-center gap-6 text-sm text-[#7a9bb8]">
             <a
               href="https://github.com/bastian-js/dropnote"
               target="_blank"
               rel="noopener noreferrer"
-              className="relative group transition-all duration-300 hover:text-[#355d8e]"
+              className="hover:text-white transition-colors duration-200"
             >
-              <span className="relative">
-                GitHub
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#355d8e] group-hover:w-full transition-all duration-300" />
-              </span>
+              GitHub
             </a>
-            <span className="hidden sm:inline text-gray-700">•</span>
+            <Link
+              to="/privacy"
+              className="hover:text-white transition-colors duration-200"
+            >
+              Privacy
+            </Link>
             <a
-              href="https://github.com/bastian-js"
+              href="https://bbastian.dev/projects"
               target="_blank"
               rel="noopener noreferrer"
-              className="relative group transition-all duration-300 hover:text-[#355d8e]"
+              className="hover:text-white transition-colors duration-200"
             >
-              <span className="relative">
-                More Projects
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#355d8e] group-hover:w-full transition-all duration-300" />
-              </span>
+              More Projects
             </a>
           </div>
+
+          {/* Made by */}
+          <a
+            href="https://github.com/bastian-js"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 px-4 py-2 rounded-xl border border-[#1c3350] hover:border-[#2a4a6a] bg-[#0d1a2b] hover:bg-[#111f30] transition-all duration-200"
+          >
+            <Github className="w-4 h-4 text-[#4d7ef5] group-hover:scale-110 transition-transform duration-200" />
+            <span className="text-[#7a9bb8] group-hover:text-white text-sm transition-colors duration-200">
+              bastian-js
+            </span>
+            <Heart className="w-3.5 h-3.5 text-[#4d7ef5] fill-[#4d7ef5]" />
+          </a>
         </div>
 
-        {/* Bottom divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-gray-800/50 to-transparent mb-8" />
-
-        {/* Copyright */}
-        <div className="text-center">
-          <p className="text-gray-600 text-xs font-light tracking-wide">
-            © {currentYear} DropNote. All rights reserved. Built with SwiftUI
-            for macOS.
+        {/* Bottom */}
+        <div className="mt-10 pt-6 border-t border-[#1c3350]/40 text-center">
+          <p className="text-[#3a5a78] text-xs">
+            © {currentYear} DropNote · Built with SwiftUI for macOS
           </p>
         </div>
       </div>
-
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#355d8e]/5 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#1a3a5c]/5 rounded-full blur-3xl pointer-events-none -z-10" />
     </footer>
   );
 };
