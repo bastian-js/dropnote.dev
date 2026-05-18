@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { Github, Download, X, ExternalLink } from "lucide-react";
+import React from "react";
+import { Github, Download, Zap, Lock } from "lucide-react";
 
 export const Hero: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <section className="relative min-h-screen bg-[#07101c] flex items-center overflow-hidden pt-16">
       {/* Dot grid background */}
@@ -43,22 +41,34 @@ export const Hero: React.FC = () => {
               focused, and always one click away — never lose a thought again.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => setShowModal(true)}
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#4d7ef5] hover:bg-[#5d8ef7] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-[#4d7ef5]/30 hover:scale-[1.02] active:scale-[0.98]"
+            <div className="grid grid-cols-2 gap-3 w-full max-w-md">
+              <a
+                href="https://apps.apple.com/app/dropnote-quick-notes/id6761221463?mt=12"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 bg-[#4d7ef5] hover:bg-[#5d8ef7] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-[#4d7ef5]/30 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Download className="w-5 h-5" />
-                Download for macOS
-              </button>
+                App Store
+              </a>
+
+              <a
+                href="https://github.com/bastian-js/dropnote/releases/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 border border-[#1c3350] hover:border-[#2a4a6a] bg-[#0d1a2b]/50 hover:bg-[#0d1a2b] text-white font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Download className="w-5 h-5 text-[#7a9bb8]" />
+                GitHub
+              </a>
 
               <a
                 href="https://github.com/bastian-js/dropnote"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 border border-[#1c3350] hover:border-[#2a4a6a] bg-[#0d1a2b]/50 hover:bg-[#0d1a2b] text-white font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="col-span-2 inline-flex items-center justify-center gap-2.5 px-5 py-3 border border-[#1c3350] hover:border-[#2a4a6a] bg-transparent hover:bg-[#0d1a2b]/50 text-[#7a9bb8] hover:text-white font-medium rounded-xl transition-all duration-200 hover:scale-[1.01] active:scale-[0.98] text-sm"
               >
-                <Github className="w-5 h-5 text-[#7a9bb8]" />
+                <Github className="w-4 h-4" />
                 View on GitHub
               </a>
             </div>
@@ -91,7 +101,7 @@ export const Hero: React.FC = () => {
 
                 {/* Floating badge — top right */}
                 <div className="absolute -top-4 -right-4 flex items-center gap-2 px-3 py-2 bg-[#0d1a2b]/90 backdrop-blur-md border border-[#1c3350] rounded-xl shadow-xl">
-                  <span className="text-lg">⚡</span>
+                  <Zap className="w-4 h-4 text-[#4d7ef5]" />
                   <div>
                     <p className="text-white text-xs font-semibold leading-none">
                       Instant access
@@ -104,7 +114,7 @@ export const Hero: React.FC = () => {
 
                 {/* Floating badge — bottom left */}
                 <div className="absolute -bottom-4 -left-4 flex items-center gap-2 px-3 py-2 bg-[#0d1a2b]/90 backdrop-blur-md border border-[#1c3350] rounded-xl shadow-xl">
-                  <span className="text-lg">🔒</span>
+                  <Lock className="w-4 h-4 text-[#4d7ef5]" />
                   <div>
                     <p className="text-white text-xs font-semibold leading-none">
                       Touch ID
@@ -119,57 +129,6 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Download modal */}
-      {showModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center px-4"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className="absolute inset-0 bg-[#07101c]/80 backdrop-blur-md"
-            onClick={() => setShowModal(false)}
-          />
-          <div className="relative w-full max-w-sm rounded-2xl border border-[#1c3350] bg-[#0d1a2b] p-6 shadow-2xl">
-            <div className="flex items-center justify-between mb-5">
-              <h3 className="text-white text-lg font-semibold">
-                Download DropNote
-              </h3>
-              <button
-                onClick={() => setShowModal(false)}
-                className="p-1.5 rounded-lg text-[#7a9bb8] hover:text-white hover:bg-[#111f30] transition-all"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="space-y-3">
-              <div className="w-full rounded-xl border border-[#1c3350] bg-[#111f30]/50 px-4 py-3.5 text-left cursor-not-allowed opacity-60">
-                <p className="text-white text-sm font-medium">App Store</p>
-                <p className="text-[#4d7ef5] text-xs mt-0.5">Coming soon</p>
-              </div>
-
-              <a
-                href="https://github.com/bastian-js/dropnote/releases/tag/v2.6.0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between w-full rounded-xl border border-[#4d7ef5]/40 bg-[#4d7ef5]/10 hover:bg-[#4d7ef5]/20 px-4 py-3.5 transition-all duration-200 group"
-              >
-                <div className="text-left">
-                  <p className="text-white text-sm font-medium">
-                    GitHub Releases
-                  </p>
-                  <p className="text-[#7a9bb8] text-xs mt-0.5">
-                    Release v2.6.0
-                  </p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-[#4d7ef5] group-hover:translate-x-0.5 transition-transform" />
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
