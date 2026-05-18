@@ -33,6 +33,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: dist/*
-          target: /var/www/html/bbastian.dev
+          target: /var/www/html/dropnote.dev
           strip_components: 1
           rm: true
